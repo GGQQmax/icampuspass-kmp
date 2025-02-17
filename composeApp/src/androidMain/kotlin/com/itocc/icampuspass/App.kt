@@ -4,6 +4,7 @@ import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.safeDrawingPadding
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -25,16 +26,27 @@ fun App() {
     MaterialTheme {
         var showContent by remember { mutableStateOf(false) }
 
-        Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
+        Column(
+            modifier = Modifier.fillMaxWidth().safeDrawingPadding(),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
             Button(onClick = { showContent = !showContent }) {
-                Text("Click me!")
+                Text(text = "Click me!")
             }
 
-            AnimatedVisibility(showContent) {
+            AnimatedVisibility(visible = showContent) {
                 val greeting = remember { Greeting().greet() }
-                Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
-                    Image(painterResource(Res.drawable.compose_multiplatform), null)
-                    Text("Compose: $greeting")
+
+                Column(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    Image(
+                        painter = painterResource(resource = Res.drawable.compose_multiplatform),
+                        contentDescription = null
+                    )
+
+                    Text(text = "Compose: $greeting")
                 }
             }
         }

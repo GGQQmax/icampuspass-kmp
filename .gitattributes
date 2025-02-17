@@ -1,0 +1,11 @@
+*.json eol=lf
+*.kt eol=lf
+*.kts eol=lf
+*.md eol=lf
+*.pbxproj eol=lf
+*.plist eol=lf
+*.properties eol=lf
+*.swift eol=lf
+*.toml eol=lf
+*.xml eol=lf
+gradlew eol=lf

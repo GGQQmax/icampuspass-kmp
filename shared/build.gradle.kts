@@ -28,8 +28,16 @@ kotlin {
         }
     }
     sourceSets {
+        all {
+            // Required by KMP-NativeCoroutines
+            languageSettings.optIn("kotlin.experimental.ExperimentalObjCName")
+
+            // Required by KMP-ObservableViewModel
+            languageSettings.optIn("kotlinx.cinterop.ExperimentalForeignApi")
+        }
         commonMain.dependencies {
             // put your Multiplatform dependencies here
+            api(libs.kmp.observable.viewmodel)
             implementation(libs.koin.core)
         }
     }
